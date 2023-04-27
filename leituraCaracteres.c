@@ -4,7 +4,6 @@
 
 int main() {
     char C;
-
     fflush(stdin); //limpa o buffer do teclado
 
     printf("Digite o caracter: ");
