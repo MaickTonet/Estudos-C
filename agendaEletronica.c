@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
 
 /*  Construir um programa em "C" que implementa uma agenda eletrônica. 
     O programa deve ter um menu com as seguintes opções:
@@ -22,6 +23,7 @@ void iniciarAgenda(cadastro *LISTA);
 cadastro *alocarCadastro();
 void inserirCadastro(cadastro *LISTA);
 void consultarNomes(cadastro *LISTA);
+void consultarLetra(cadastro *LISTA);
 
 int main() {
     system("CLS");
@@ -42,12 +44,27 @@ int main() {
                 inserirCadastro(LISTA);
                 break;
             }
+
             case 2: { // Fazer a consulta de nomes na agenda
                 consultarNomes(LISTA);
                 break;
             } 
-            case 3: {} // Fazer a busca de nomes por letra
-            default: {} // Fazer a opção para a "nenhuma das acima"
+
+            case 3: { // Fazer a busca de nomes por letra
+                consultarLetra(LISTA);
+                break;
+            }
+
+            case 0: {
+                system("CLS");
+                printf("Fim do programa\n");
+                break;
+            } 
+
+            default: {
+                system("CLS");
+                printf("Operacao invalida\n\n");                
+            }
         }
 
     } while(op != 0);
@@ -127,4 +144,29 @@ void consultarNomes(cadastro *LISTA) { // Consulta um nome na agenda
         if(flag == 0) { printf("Nome nao encontrado\n"); }
     } 
     system("pause");
+}
+
+void consultarLetra(cadastro *LISTA) { // Consulta todos os nomes que comecem com um caracter
+    system("CLS");
+    char c;
+
+    fflush(stdin);
+    printf("Digite a letra que deseja consultar: ");
+
+    c = getchar();
+    c = toupper(c);
+
+    cadastro *tmp;
+    tmp = LISTA->prox;
+
+    int flag = 0;
+
+        while(tmp != NULL) {
+            if(c == toupper(tmp->nome[0])) {
+                printf("%s - %d\n", tmp->nome, tmp->numero);
+                flag = 1;
+            }
+            tmp = tmp->prox;
+        }
+    if(flag == 0) { printf("Nenhum resultado\n"); }
 }
