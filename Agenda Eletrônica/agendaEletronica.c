@@ -3,12 +3,6 @@
 #include <string.h>
 #include <conio.h>
 
-/*  Construir um programa em "C" que implementa uma agenda eletrônica. 
-    O programa deve ter um menu com as seguintes opções:
-    1 - Entrar um nome na agenda
-    2 - Imprimir na tela os dados de uma das pessoas cadastradas (consulta por nome)
-    3 - Imprimir na impressora a lista dos nomes que começam pela letra indicada    */
-
 struct agendaEletronica { // Agenda Eletrônica que cadastra novos nomes
     char nome[25];
     int numero;
